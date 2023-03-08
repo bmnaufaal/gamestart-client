@@ -1,18 +1,26 @@
 <script>
 import { mapState, mapWritableState, mapActions } from 'pinia'
 import { useLoginStore } from '../../stores/login'
+import { useUserStore } from '../../stores/user'
 
 export default {
   name: 'Navbar',
   computed: {
-    ...mapWritableState(useLoginStore, ['isLoggedIn'])
+    ...mapWritableState(useLoginStore, ['isLoggedIn']),
+    ...mapWritableState(useUserStore, ['userData'])
   },
   methods: {
-    ...mapActions(useLoginStore, ['handleLogout'])
+    ...mapActions(useLoginStore, ['handleLogout']),
+    ...mapActions(useUserStore, ['fetchUserData'])
   },
   created() {
     if (localStorage.access_token) {
       this.isLoggedIn = true
+    }
+  },
+  beforeUpdate() {
+    if (localStorage.access_token) {
+      this.fetchUserData()
     }
   }
 }
@@ -46,14 +54,6 @@ export default {
       <router-link :to="{ name: 'login' }" class="btn btn-light" v-if="!isLoggedIn"
         >Login</router-link
       >
-      <!-- <router-link
-        :to="{ name: 'login' }"
-        class="btn btn-light"
-        v-if="isLoggedIn"
-        @click.prevent="handleLogout"
-        >Logout</router-link
-      > -->
-      <!-- User -->
       <ul class="navbar-nav ml-auto" v-if="isLoggedIn">
         <li class="nav-item">
           <a
@@ -64,7 +64,7 @@ export default {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Username
+            {{ userData.name }}
           </a>
 
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

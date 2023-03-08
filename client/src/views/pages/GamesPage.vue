@@ -28,7 +28,7 @@ export default {
       <div class="card-body">
         <div class="card bg-black text-white">
           <div class="card-body">
-            <h3 class="fw-bold">Home Page</h3>
+            <h3 class="fw-bold">Popular Games</h3>
           </div>
         </div>
 

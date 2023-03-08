@@ -29,9 +29,14 @@ export default {
     <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item bg-dark text-white">
-          <h5 class="card-title fw-bold">
-            {{ game.name }}
-          </h5>
+          <div class="row">
+            <h5 class="card-title fw-bold">
+              {{ game.name }}
+            </h5>
+          </div>
+          <span class="ms-1 badge text-bg-warning">
+            {{ rating }}
+          </span>
         </li>
         <li class="list-group-item bg-dark text-white">
           <span
@@ -40,7 +45,6 @@ export default {
             :key="genre"
             >{{ genre.name }}</span
           >
-          <span class="ms-1 badge text-bg-warning">{{ rating }}</span>
         </li>
         <li
           class="list-group-item bg-dark text-white overflow-auto"

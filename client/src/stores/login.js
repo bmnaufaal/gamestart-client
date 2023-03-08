@@ -32,7 +32,6 @@ export const useLoginStore = defineStore('login', {
     },
 
     async handleLogout() {
-      console.log('logout')
       localStorage.clear()
       this.isLoggedIn = false
       this.router.push('/login')
