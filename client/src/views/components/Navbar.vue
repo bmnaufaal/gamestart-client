@@ -16,6 +16,7 @@ export default {
   created() {
     if (localStorage.access_token) {
       this.isLoggedIn = true
+      this.fetchUserData()
     }
   },
   beforeUpdate() {
@@ -29,7 +30,11 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#"><BootstrapIcon icon="joystick" /> MyGames App</a>
+      <router-link :to="{ name: 'home' }" class="navbar-brand fw-bold" href="#"
+        ><BootstrapIcon icon="joystick" /> Game<span class="ms-1 badge text-bg-light"
+          >Start</span
+        ></router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -46,7 +51,7 @@ export default {
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="isLoggedIn">
             <a class="nav-link" href="#">Wishlist</a>
           </li>
         </ul>
@@ -68,7 +73,9 @@ export default {
           </a>
 
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item dropdown" href="#"> Profile </a>
+            <router-link :to="{ name: 'profile' }" class="dropdown-item dropdown"
+              >Profile</router-link
+            >
             <a class="dropdown-item" href="#" @click.prevent="handleLogout"> Logout </a>
           </div>
         </li>

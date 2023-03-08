@@ -30,6 +30,7 @@ export default {
                   placeholder="Email"
                   required
                   autofocus
+                  autocomplete="off"
                   v-model="inputLogin.email"
                 />
                 <label for="floatingInputUsername">Email</label>
@@ -42,6 +43,7 @@ export default {
                   id="floatingInputEmail"
                   placeholder="Password"
                   required
+                  autocomplete="off"
                   v-model="inputLogin.password"
                 />
                 <label for="floatingInputEmail">Password</label>
@@ -55,7 +57,7 @@ export default {
 
               <hr class="my-4" />
               <div class="text-center mb-3">
-                <!-- <GoogleLogin :callback="callback" /> -->
+                <GoogleLogin :callback="callback" />
               </div>
 
               <p class="text-center">Dont have an account?</p>
