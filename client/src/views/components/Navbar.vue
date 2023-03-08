@@ -1,13 +1,35 @@
 <script>
+import { mapState, mapWritableState, mapActions } from 'pinia'
+import { useLoginStore } from '../../stores/login'
+import { useUserStore } from '../../stores/user'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  computed: {
+    ...mapWritableState(useLoginStore, ['isLoggedIn']),
+    ...mapWritableState(useUserStore, ['userData'])
+  },
+  methods: {
+    ...mapActions(useLoginStore, ['handleLogout']),
+    ...mapActions(useUserStore, ['fetchUserData'])
+  },
+  created() {
+    if (localStorage.access_token) {
+      this.isLoggedIn = true
+    }
+  },
+  beforeUpdate() {
+    if (localStorage.access_token) {
+      this.fetchUserData()
+    }
+  }
 }
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><BootstrapIcon icon="joystick" /> MyGames App</a>
+      <a class="navbar-brand fw-bold" href="#"><BootstrapIcon icon="joystick" /> MyGames App</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -22,16 +44,17 @@ export default {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Wishlist</a>
           </li>
         </ul>
       </div>
-      <button class="btn btn-light">Login</button>
-      <!-- User -->
-      <ul class="navbar-nav ml-auto">
+      <router-link :to="{ name: 'login' }" class="btn btn-light" v-if="!isLoggedIn"
+        >Login</router-link
+      >
+      <ul class="navbar-nav ml-auto" v-if="isLoggedIn">
         <li class="nav-item">
           <a
             class="nav-link dropdown-toggle"
@@ -41,12 +64,12 @@ export default {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Username
+            {{ userData.name }}
           </a>
 
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item dropdown" href="#"> Profile </a>
-            <a class="dropdown-item" href="#"> Logout </a>
+            <a class="dropdown-item" href="#" @click.prevent="handleLogout"> Logout </a>
           </div>
         </li>
       </ul>
