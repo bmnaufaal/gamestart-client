@@ -55,7 +55,7 @@ export default {
 
               <hr class="my-4" />
               <div class="text-center mb-3">
-                <GoogleLogin :callback="callback" />
+                <!-- <GoogleLogin :callback="callback" /> -->
               </div>
 
               <p class="text-center">Dont have an account?</p>

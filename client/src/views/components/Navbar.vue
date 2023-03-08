@@ -1,6 +1,20 @@
 <script>
+import { mapState, mapWritableState, mapActions } from 'pinia'
+import { useLoginStore } from '../../stores/login'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  computed: {
+    ...mapWritableState(useLoginStore, ['isLoggedIn'])
+  },
+  methods: {
+    ...mapActions(useLoginStore, ['handleLogout'])
+  },
+  created() {
+    if (localStorage.access_token) {
+      this.isLoggedIn = true
+    }
+  }
 }
 </script>
 
@@ -22,16 +36,25 @@ export default {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Wishlist</a>
           </li>
         </ul>
       </div>
-      <button class="btn btn-light">Login</button>
+      <router-link :to="{ name: 'login' }" class="btn btn-light" v-if="!isLoggedIn"
+        >Login</router-link
+      >
+      <!-- <router-link
+        :to="{ name: 'login' }"
+        class="btn btn-light"
+        v-if="isLoggedIn"
+        @click.prevent="handleLogout"
+        >Logout</router-link
+      > -->
       <!-- User -->
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" v-if="isLoggedIn">
         <li class="nav-item">
           <a
             class="nav-link dropdown-toggle"
@@ -46,7 +69,7 @@ export default {
 
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item dropdown" href="#"> Profile </a>
-            <a class="dropdown-item" href="#"> Logout </a>
+            <a class="dropdown-item" href="#" @click.prevent="handleLogout"> Logout </a>
           </div>
         </li>
       </ul>
