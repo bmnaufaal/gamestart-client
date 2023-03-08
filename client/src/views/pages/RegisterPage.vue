@@ -31,6 +31,7 @@ export default {
                   placeholder="Email"
                   required
                   autofocus
+                  autocomplete="off"
                   v-model="inputRegister.email"
                 />
                 <label for="floatingInputUsername">Email</label>
@@ -43,6 +44,7 @@ export default {
                   id="floatingInputEmail"
                   placeholder="Password"
                   required
+                  autocomplete="off"
                   v-model="inputRegister.password"
                 />
                 <label for="floatingInputEmail">Password</label>
