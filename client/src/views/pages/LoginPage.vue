@@ -8,7 +8,7 @@ export default {
     ...mapState(useLoginStore, ['inputLogin'])
   },
   methods: {
-    ...mapActions(useLoginStore, ['handleLogin'])
+    ...mapActions(useLoginStore, ['handleLogin', 'callback'])
   }
 }
 </script>

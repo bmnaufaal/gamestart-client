@@ -8,20 +8,24 @@ export const useGameStore = defineStore('game', {
   state: () => ({
     baseUrl: 'http://localhost:3000',
     games: [],
-    loading: false
+    loading: false,
+    maxPages: 0
   }),
-  getters: {
-    getImage(state) {
-      return state.games.cover.id
-    }
-  },
   actions: {
-    async fetchGames() {
+    async fetchGames(page, size, search) {
       try {
         this.loading = true
+        let queryParams = {
+          page: page,
+          size: size
+        }
+        if (search) {
+          queryParams.search = search
+        }
         const { data } = await axios({
           method: 'GET',
-          url: this.baseUrl + '/games'
+          url: this.baseUrl + '/games',
+          params: queryParams
         })
         this.loading = false
         this.games = data
@@ -47,34 +51,6 @@ export const useGameStore = defineStore('game', {
       } catch (error) {
         console.log(error)
         this.loading = false
-        notifyError(error.response.data.message)
-      }
-    },
-    async buyGame() {
-      try {
-        window.snap.pay('TRANSACTION_TOKEN_HERE', {
-          onSuccess: function (result) {
-            /* You may add your own implementation here */
-            alert('payment success!')
-            console.log(result)
-          },
-          onPending: function (result) {
-            /* You may add your own implementation here */
-            alert('wating your payment!')
-            console.log(result)
-          },
-          onError: function (result) {
-            /* You may add your own implementation here */
-            alert('payment failed!')
-            console.log(result)
-          },
-          onClose: function () {
-            /* You may add your own implementation here */
-            alert('you closed the popup without finishing the payment')
-          }
-        })
-      } catch (error) {
-        console.log(error)
         notifyError(error.response.data.message)
       }
     }

@@ -30,7 +30,7 @@ export default {
                 :src="userData.profilePicture"
                 alt="userData.name"
                 class="img-fluid img-thumbnail mt-5 mb-2"
-                style="width: 150px; z-index: 1;"
+                style="width: 150px; z-index: 1"
               />
             </div>
 
@@ -44,13 +44,10 @@ export default {
             <div class="mb-5">
               <p class="lead fw-normal mb-1">About</p>
               <div class="p-4" style="background-color: #f8f9fa">
-                <p class="font-italic mb-1">Web Developer</p>
-                <p class="font-italic mb-1">Lives in New York</p>
-                <p class="font-italic mb-0">Photographer</p>
+                <p class="font-italic mb-1">Live</p>
+                <p class="font-italic mb-1">Laugh</p>
+                <p class="font-italic mb-0">Love</p>
               </div>
-              <button class="btn btn-outline-dark mt-3" data-mdb-ripple-color="dark">
-                Edit profile
-              </button>
             </div>
           </div>
         </div>
