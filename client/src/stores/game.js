@@ -30,6 +30,25 @@ export const useGameStore = defineStore('game', {
         this.loading = false
         notifyError(error.response.data.message)
       }
+    },
+    async handleAddToWishlist(gameId) {
+      try {
+        const { data } = await axios({
+          method: 'POST',
+          url: this.baseUrl + '/wishlists/add',
+          headers: {
+            access_token: localStorage.getItem('access_token s')
+          },
+          data: {
+            gameId: gameId
+          }
+        })
+        notifySuccess(data.message)
+      } catch (error) {
+        console.log(error)
+        this.loading = false
+        notifyError(error.response.data.message)
+      }
     }
   }
 })

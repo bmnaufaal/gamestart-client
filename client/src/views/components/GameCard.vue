@@ -1,44 +1,54 @@
 <script>
 export default {
   name: 'GameCard',
-  props: ['game']
+  props: ['game'],
+  computed: {
+    image() {
+      return `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.game.cover.image_id}.png`
+    },
+    rating() {
+      return Math.floor(this.game.rating)
+    },
+    price() {
+      return new Intl.NumberFormat('en-ID', { style: 'currency', currency: 'IDR' }).format(
+        this.game.price
+      )
+    }
+  }
 }
 </script>
 
 <template>
   <!-- Game Card -->
-  <div class="card mx-2 my-2 bg-green" style="width: 18rem">
-    <!-- <img class="card-img-top" :src="game.cover.image_id" v-bind:alt="movie.title" /> -->
+  <div class="card mx-2 my-2 bg-dark text-white game-card" style="width: 18rem">
+    <img
+      class="card-img-top"
+      :src="image"
+      onerror="this.src='https://cf.bstatic.com/xdata/images/hotel/max1024x768/426517480.jpg?k=d7df6e7d794cf1d72ea8fc2fc7d9a0dd7de4f2d0d0b941c9fdd823874284ed7e&o=&hp=1'"
+    />
     <div class="card-body">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item bg-green">
-          <h5 class="card-title">{{ game.name }}</h5>
+        <li class="list-group-item bg-dark text-white">
+          <h5 class="card-title fw-bold">
+            {{ game.name }}
+          </h5>
         </li>
-        <li class="list-group-item bg-green text-white">
-          <!-- <span class="ms-1 badge text-bg-success">{{ genre.rating }}</span> -->
+        <li class="list-group-item bg-dark text-white">
+          <span
+            class="ms-1 badge text-bg-light"
+            v-for="(genre, index) in game.genres"
+            :key="genre"
+            >{{ genre.name }}</span
+          >
+          <span class="ms-1 badge text-bg-warning">{{ rating }}</span>
         </li>
-        <!-- <li class="list-group-item bg-green" style="text-align: justify; text-justify: inter-word">
-          {{ movie.synopsis }}
-        </li> -->
+        <li
+          class="list-group-item bg-dark text-white overflow-auto"
+          style="text-align: justify; text-justify: inter-word; height: 200px"
+        >
+          {{ game.summary }}
+        </li>
       </ul>
-    </div>
-    <div class="card-footer">
-      <!-- <router-link :to="{ path: `/movies/${movie.id}` }" class="btn btn-success" v-if="!bookmarkId"
-        >Detail</router-link
-      >
-      <router-link
-        :to="{ path: `/bookmarks/${bookmarkId}` }"
-        class="btn btn-success"
-        v-if="bookmarkId"
-        >Detail</router-link -->
-      >
-      <!-- <button
-        class="btn btn-danger ms-1"
-        v-if="page === 'bookmarkPage'"
-        @click.prevent="handleDeleteBookmark(bookmark.id)"
-      >
-        Delete
-      </button> -->
     </div>
   </div>
   <!-- End Of Game Card -->

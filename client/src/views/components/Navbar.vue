@@ -19,9 +19,9 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><BootstrapIcon icon="joystick" /> MyGames App</a>
+      <a class="navbar-brand fw-bold" href="#"><BootstrapIcon icon="joystick" /> MyGames App</a>
       <button
         class="navbar-toggler"
         type="button"
