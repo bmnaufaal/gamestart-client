@@ -4,8 +4,7 @@ export default {
   props: ['game'],
   computed: {
     image() {
-      
-      return `https://images.igdb.com/igdb/image/upload/t_cover_big/.png`
+      return `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.game.cover.image_id}.png`
     },
     rating() {
       return Math.floor(this.game.rating)
