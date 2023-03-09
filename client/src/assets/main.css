@@ -1,0 +1,51 @@
+body {
+  background-color: #212529;
+  font-family: 'Poppins', sans-serif;
+}
+
+.game-card:hover {
+  cursor: pointer;
+  filter: brightness(125%);
+}
+
+.card-img-left {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background: scroll center
+    url('https://i.pinimg.com/originals/a9/62/db/a962db948b1eb9653e0a7b02851538d5.jpg');
+  background-size: cover;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(200, 200, 200, 1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(90, 90, 90, 0.7);
+}
+
+.form-control {
+  border: 1px #343a40;
+}
