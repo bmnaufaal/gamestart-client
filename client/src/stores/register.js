@@ -6,7 +6,7 @@ import notifyError from '../../helpers/toastError.js'
 
 export const useRegisterStore = defineStore('register', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     inputRegister: {
       email: '',
       password: ''

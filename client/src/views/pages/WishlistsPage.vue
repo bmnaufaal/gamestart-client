@@ -36,12 +36,12 @@ export default {
         </div>
 
         <Loading v-if="loading" />
-        <div class="d-flex flex-wrap justify-content-center text-center mt-3" v-if="wishlists">
+        <div class="d-flex flex-wrap justify-content-center text-center mt-3">
           <GameCard
-            v-for="(wishlist, index) in wishlists"
-            :key="wishlist.id"
-            :game="wishlist"
-            @click.prevent="openDetailPage(wishlist.id)"
+            v-for="(game, index) in wishlists"
+            :key="game.id"
+            :game="game"
+            @click.prevent="openDetailPage(game.id)"
           />
         </div>
       </div>

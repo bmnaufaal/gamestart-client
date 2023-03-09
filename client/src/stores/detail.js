@@ -8,7 +8,7 @@ import notifyInfo from '../../helpers/toastInfo.js'
 
 export const useDetailStore = defineStore('detail', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     game: [
       {
         name: '',

@@ -6,7 +6,7 @@ import notifyError from '../../helpers/toastError.js'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     userData: {
       id: 0,
       name: '',
