@@ -60,7 +60,7 @@ export default {
                 aria-label="Search"
                 v-model="search"
               />
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-light" type="submit">Search</button>
             </form>
           </div>
         </div>

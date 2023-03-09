@@ -55,7 +55,7 @@ export default {
             <div class="ratio ratio-16x9">
               <iframe allow="autoplay" :src="video" title="YouTube video" allowfullscreen></iframe>
             </div>
-            <h4 class="fw-bold">Summary</h4>
+            <h4 class="mt-3 fw-bold">Summary</h4>
             <p>{{ game[0].summary }}</p>
 
             <h4 class="fw-bold">Genre</h4>
