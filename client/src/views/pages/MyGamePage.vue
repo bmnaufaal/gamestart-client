@@ -36,7 +36,7 @@ export default {
         </div>
 
         <Loading v-if="loading" />
-        <div class="d-flex flex-wrap justify-content-center text-center mt-3" v-if="mygames">
+        <div class="d-flex flex-wrap justify-content-center text-center mt-3">
           <GameCard
             v-for="(mygame, index) in mygames"
             :key="mygame.id"

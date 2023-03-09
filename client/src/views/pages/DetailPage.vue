@@ -10,10 +10,14 @@ export default {
       return `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${this.game[0].cover.image_id}.png`
     },
     video() {
-      return `https://www.youtube.com/embed/${this.game[0].videos[0].video_id}`
+      return `https://www.youtube.com/embed/${this.game[0].videos[0].video_id}?autoplay=1`
     },
     rating() {
-      return Math.floor(this.game[0].rating)
+      if (this.game.rating) {
+        return Math.floor(this.game.rating)
+      } else {
+        return '-'
+      }
     },
     screenshots() {
       let output = []
@@ -48,8 +52,8 @@ export default {
             </h3>
 
             <!-- <img class="img-fluid img-thumbnail" :src="image" alt="" /> -->
-            <div class="embed-responsive embed-responsive-16by9 mt-3 mb-3" v-if="video">
-              <iframe class="embed-responsive-item" :src="video"></iframe>
+            <div class="ratio ratio-16x9">
+              <iframe allow="autoplay" :src="video" title="YouTube video" allowfullscreen></iframe>
             </div>
             <h4 class="fw-bold">Summary</h4>
             <p>{{ game[0].summary }}</p>
