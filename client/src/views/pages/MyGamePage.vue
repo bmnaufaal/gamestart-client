@@ -36,11 +36,11 @@ export default {
         </div>
 
         <Loading v-if="loading" />
-        <div class="d-flex flex-wrap justify-content-center text-center mt-3">
+        <div class="d-flex flex-wrap justify-content-center text-center mt-3" v-if="mygames">
           <GameCard
-            v-for="(game, index) in mygames"
-            :key="game.id"
-            :game="game"
+            v-for="(mygame, index) in mygames"
+            :key="mygame.id"
+            :game="mygame"
             @click.prevent="openDetailPage(game.id)"
           />
         </div>

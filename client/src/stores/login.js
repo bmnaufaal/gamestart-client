@@ -6,7 +6,7 @@ import notifyError from '../../helpers/toastError.js'
 
 export const useLoginStore = defineStore('login', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     inputLogin: {
       email: '',
       password: ''

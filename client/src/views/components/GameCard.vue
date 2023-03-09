@@ -4,7 +4,8 @@ export default {
   props: ['game'],
   computed: {
     image() {
-      return `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.game.cover.image_id}.png`
+      
+      return `https://images.igdb.com/igdb/image/upload/t_cover_big/.png`
     },
     rating() {
       return Math.floor(this.game.rating)
@@ -20,7 +21,7 @@ export default {
 
 <template>
   <!-- Game Card -->
-  <div class="card mx-2 my-2 bg-dark text-white game-card" style="width: 18rem">
+  <div class="card mx-2 my-2 bg-dark text-white game-card" style="width: 18rem" v-if="game">
     <img
       class="card-img-top"
       :src="image"

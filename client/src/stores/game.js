@@ -6,8 +6,14 @@ import notifyError from '../../helpers/toastError.js'
 
 export const useGameStore = defineStore('game', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
-    games: [],
+    baseUrl: 'https://gamestart-production.up.railway.app',
+    games: [
+      {
+        cover: {
+          image_id: ''
+        }
+      }
+    ],
     loading: false,
     maxPages: 0
   }),

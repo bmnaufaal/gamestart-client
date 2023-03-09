@@ -7,7 +7,7 @@ import { useRoute } from 'vue-router'
 
 export const useWishlistStore = defineStore('wishlist', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     wishlists: [],
     loading: false
   }),

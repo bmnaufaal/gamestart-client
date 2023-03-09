@@ -7,10 +7,9 @@ import { useRoute } from 'vue-router'
 
 export const useMyGameStore = defineStore('mygame', {
   state: () => ({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://gamestart-production.up.railway.app',
     mygames: [],
-    loading: false,
-    
+    loading: false
   }),
   actions: {
     async fetchMyGames() {
