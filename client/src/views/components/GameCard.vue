@@ -7,7 +7,11 @@ export default {
       return `https://images.igdb.com/igdb/image/upload/t_cover_big/${this.game.cover.image_id}.png`
     },
     rating() {
-      return Math.floor(this.game.rating)
+      if (this.game.rating) {
+        return Math.floor(this.game.rating)
+      } else {
+        return '-'
+      }
     },
     price() {
       return new Intl.NumberFormat('en-ID', { style: 'currency', currency: 'IDR' }).format(
@@ -23,6 +27,7 @@ export default {
   <div class="card mx-2 my-2 bg-dark text-white game-card" style="width: 18rem" v-if="game">
     <img
       class="card-img-top"
+      style="height: 400px"
       :src="image"
       onerror="this.src='https://cf.bstatic.com/xdata/images/hotel/max1024x768/426517480.jpg?k=d7df6e7d794cf1d72ea8fc2fc7d9a0dd7de4f2d0d0b941c9fdd823874284ed7e&o=&hp=1'"
     />
