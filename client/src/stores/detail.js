@@ -67,6 +67,7 @@ export const useDetailStore = defineStore('detail', {
           }
         })
         notifySuccess(data.message)
+        this.router.push('/mygames')
       } catch (error) {
         console.log(error)
         notifyError(error.response.data.message)
